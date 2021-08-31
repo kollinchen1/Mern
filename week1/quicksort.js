@@ -1,9 +1,11 @@
 function quickSort(array1,i,j){
     if(i<j){
-
+        
     }
 }
-
+function part(arr,i,j){
+    
+}
 
 var array1 = [1, 4, 2, 7, 6, 3, 8, 20, 9, 15, 12, 10, 30 ];
 var array2 = [1, 3, 5, 4, 8, 30, 20, 17, 7];
