@@ -16,7 +16,7 @@ const Form = (props) => {
         })
         switch(e.target.name){
             case "firstName":
-                if(e.target.value.length<2)
+                if(e.target.value.length<2&&e.target.value.length!==0)
                     setfError(
                         "must be at least 2 characters."
                     )
@@ -25,7 +25,7 @@ const Form = (props) => {
                 console.log("first")
                 break;
             case "lastName":
-                if(e.target.value.length<2)
+                if(e.target.value.length<2&&e.target.value.length!==0)
                     setlError(
                         "must be at least 2 characters."
                     )
@@ -34,7 +34,7 @@ const Form = (props) => {
                 console.log("last")
                 break;
             case "email":
-                if(e.target.value.length<5)
+                if(e.target.value.length<5&&e.target.value.length!==0)
                     seteError(
                         "must be at least 5 characters."
                     )
@@ -43,13 +43,13 @@ const Form = (props) => {
                 console.log("email")
                 break;
             case "password":
-                if(e.target.value.length<8)
+                if(e.target.value.length<8&&e.target.value.length!==0)
                     setpError(
                         "must be at least 5 characters."
                     )
                 else
                     setpError("")
-                if(e.target.value != inputs['confirmPassword'])
+                if(e.target.value !== inputs['confirmPassword'])
                     setpcError(
                         "Not Match"
                     )
@@ -59,12 +59,14 @@ const Form = (props) => {
                 console.log(inputs['confirmPassword'])
                 break;
             case "confirmPassword":
-                if(e.target.value != inputs['password'])
+                if(e.target.value !== inputs['password'])
                     setpcError(
                         "Not Match"
                     )
                 else
                     setpcError("")
+                break;
+            default:
                 break;
         }
     }
