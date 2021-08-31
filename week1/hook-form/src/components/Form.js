@@ -1,14 +1,56 @@
 import React, { useState } from  'react';
 
 const Form = (props) => {
-    const [ferrors, setfError] = useState("");
-    const [lerrors, setlError] = useState("");
-    const [eerrors, seteError] = useState("");
-    const [perrors, setpError] = useState("");
-    const [pcerrors, setpcError] = useState("");
-
-
     const{inputs,setInputs} = props
+    // const [ferrors, setfError] = useState("");
+    // const [lerrors, setlError] = useState("");
+    // const [eerrors, seteError] = useState("");
+    // const [perrors, setpError] = useState("");
+    // const [pcerrors, setpcError] = useState("");
+    const [errorObj,setErrorObj] = useState({
+        firstName:"",
+        lastName:"",
+        email:"",
+        password:"",
+        confirmPassword:""
+    })
+    const createUser = (e) => {
+        e.preventDefault();
+        const newUser = inputs
+        if(!hasErrors()&&!emptyForm(newUser)){
+            setErrorObj({
+                firstName:"",
+                lastName:"",
+                email:"",
+                password:"",
+                confirmPassword:""
+                }
+            )
+            alert("Welcome "+ newUser.firstName);
+            
+        }
+        else{
+            alert("Please fix the errors")
+        }
+        
+    };
+    const emptyForm = (newUser) =>{
+        for(let a in newUser){
+            // console.log(newUser[a]);
+            if(newUser[a])
+                return false;
+        }
+        return true
+    }
+    const hasErrors = () =>{
+        // console.log("da");
+        for(let a in errorObj){
+            console.log(errorObj[a]);
+            if(errorObj[a])
+                return true;
+        }
+        return false;
+    }
     const onChange = (e) =>{
         setInputs({
             ...inputs,
@@ -16,55 +58,101 @@ const Form = (props) => {
         })
         switch(e.target.name){
             case "firstName":
+                setErrorObj({
+                    ...errorObj,
+                    firstName:"must be at least 2 characters."
+                    }
+                )
                 if(e.target.value.length<2&&e.target.value.length!==0)
-                    setfError(
-                        "must be at least 2 characters."
+                    setErrorObj({
+                        ...errorObj,
+                        firstName:"must be at least 2 characters."
+                        }
                     )
                 else
-                    setfError("")
-                console.log("first")
+                    setErrorObj({
+                        ...errorObj,
+                        firstName:""
+                        }
+                )
+                // console.log("first")
                 break;
             case "lastName":
                 if(e.target.value.length<2&&e.target.value.length!==0)
-                    setlError(
-                        "must be at least 2 characters."
+                    setErrorObj({
+                        ...errorObj,
+                        lastName:"must be at least 2 characters."
+                        }
                     )
                 else
-                    setlError("")
+                    setErrorObj({
+                        ...errorObj,
+                        lastName:""
+                        }
+                    )
                 console.log("last")
                 break;
             case "email":
                 if(e.target.value.length<5&&e.target.value.length!==0)
-                    seteError(
-                        "must be at least 5 characters."
+                    setErrorObj({
+                        ...errorObj,
+                        email:"must be at least 5 characters."
+                        }
                     )
                 else
-                    seteError("")
+                    setErrorObj({
+                        ...errorObj,
+                        email:""
+                        }
+                    )
                 console.log("email")
                 break;
             case "password":
-                if(e.target.value.length<8&&e.target.value.length!==0)
-                    setpError(
-                        "must be at least 5 characters."
+                if(e.target.value.length<8 && e.target.value.length!==0){
+                    setErrorObj({
+                        ...errorObj,
+                        password:"must be at least 8 characters."
+                        }
                     )
-                else
-                    setpError("")
-                if(e.target.value !== inputs['confirmPassword'])
-                    setpcError(
-                        "Not Match"
+                    console.log(errorObj.password)
+                }
+                    
+                else{
+                    console.log("Nope 121")
+                    setErrorObj({
+                        ...errorObj,
+                        password:""
+                        }
                     )
-                else
-                    setpcError("")
-                
-                console.log(inputs['confirmPassword'])
+                }
+                // if(e.target.value !== inputs['confirmPassword'])
+                //     setErrorObj({
+                //         ...errorObj,
+                //         confirmPassword:"Not Match"
+                //         }
+                //     )
+                // else
+                //     setErrorObj({
+                //         ...errorObj,
+                //         confirmPassword:""
+                //         }
+                //     )
+                // console.log(errorObj.password)
+                // console.log(errorObj.confirmPassword)
                 break;
             case "confirmPassword":
                 if(e.target.value !== inputs['password'])
-                    setpcError(
-                        "Not Match"
+                    setErrorObj({
+                        ...errorObj,
+                        confirmPassword:"Not Match"
+                        }
                     )
                 else
-                    setpcError("")
+                    setErrorObj({
+                        ...errorObj,
+                        confirmPassword:""
+                        }
+                    )
                 break;
             default:
                 break;
@@ -74,58 +162,59 @@ const Form = (props) => {
 
     return(
         <div>
-            <form>
+            <form onSubmit={ createUser }>
                 <div>
                     <label htmlFor="firstName">First Name: </label> 
                     <input type="text" name = "firstName" onChange={onChange} />
                     {
-                        ferrors?
-                        <p style={{color:'red'}}>{ ferrors }</p> 
+                        // ferrors?
+                        errorObj.firstName?
+                        <p style={{color:'red'}}>{ errorObj.firstName }</p> 
                         :
-                        ''
+                        <p>&nbsp;</p>
                     }
                 </div>
                 <div>
                     <label htmlFor="lastName">Last Name: </label> 
                     <input type="text" name = "lastName" onChange={onChange} />
                     {
-                        lerrors?
-                        <p style={{color:'red'}}>{ lerrors }</p> 
+                        errorObj.lastName?
+                        <p style={{color:'red'}}>{ errorObj.lastName }</p> 
                         :
-                        ''
+                        <p>&nbsp;</p>
                     }
                 </div>
                 <div>
                     <label htmlFor="email">Email: </label> 
                     <input type="email" name = "email" onChange={onChange} />
                     {
-                        eerrors?
-                        <p style={{color:'red'}}>{ eerrors }</p> 
+                        errorObj.email?
+                        <p style={{color:'red'}}>{ errorObj.email }</p> 
                         :
-                        ''
+                        <p>&nbsp;</p>
                     }
                 </div>
                 <div>
                     <label htmlFor="password">Password: </label>
                     <input type="password"name = "password" onChange={onChange} />
                     {
-                        perrors?
-                        <p style={{color:'red'}}>{ perrors }</p> 
+                        errorObj.password?
+                        <p style={{color:'red'}}>{ errorObj.password }</p> 
                         :
-                        ''
+                        <p>&nbsp;</p>
                     }
                 </div>
                 <div>
                     <label htmlFor="confirmPassword">Confirm Password: </label> 
                     <input type="password" name = "confirmPassword" onChange={onChange} />
                     {
-                        pcerrors?
-                        <p style={{color:'red'}}>{ pcerrors }</p> 
+                        errorObj.confirmPassword?
+                        <p style={{color:'red'}}>{ errorObj.confirmPassword }</p> 
                         :
-                        ''
+                        <p>&nbsp;</p>
                     }
                 </div>
-                {/* <input type="submit" value="Create User" /> */}
+                <input type="submit" value="Create User" />
             </form>
         </div>
         
