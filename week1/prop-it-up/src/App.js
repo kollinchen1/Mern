@@ -1,16 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import PersonCard from "./components/PersonCard"
+import PersonCard from './components/PersonCard';
+
+var peopleArr =[
+  {"firstName":"Jane", "lastName":"Doe", "age":45, "hairColor":"Black"},
+  {"firstName":"John", "lastName":"Smith","age":88,"hairColor":"Brown"},
+  {"firstName":"Millard", "lastName":"Fillmore","age":50,"hairColor":"Brown"},
+  {"firstName":"Maria", "lastName":"Smith","age":62,"hairColor":"Brown"}
+]
+
 function App() {
   return (
     <div className="App">
-      <PersonCard name="Doe, Jane" age={45} hairColor="Black"/>
-      <PersonCard name="Smith, John" age={88} hairColor="Brown"/>
-      <PersonCard name="Fillmore, Millard" age={50} hairColor="Brown"/>
-      <PersonCard name="Smite, Maria" age={62} hairColor="Brown"/>
-
+        {peopleArr.map(person => {
+          return <PersonCard header={person.lastName +", " + person.firstName} firstName={person.firstName} lastName={person.lastName} age={person.age} hairColor={person.hairColor} />
+        })
+        
+        }
     </div>
   );
 }
-
+    
 export default App;
