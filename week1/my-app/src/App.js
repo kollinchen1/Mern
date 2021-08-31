@@ -1,26 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Test from "./components/Test"
+import MyNewComponent from './components/MyNewComponent';
+import LightSwitch from './components/LightSwitch';
+
+    
+    
 function App() {
   return (
     <div className="App">
-      <Test/>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+        <MyNewComponent header={ "Header Prop" }>
+            <p>This is a child</p>
+            <p>This is another child</p>
+            <p>This is even another child</p>
+        </MyNewComponent>  
+        <button onClick={ ()=> alert("This button has been clicked!") }>Click Me</button>
+        <LightSwitch header={ "LightSwitch Prop" }>
+            <p>This is a child</p>
+
+        </LightSwitch>  
     </div>
   );
 }
-
+    
 export default App;
