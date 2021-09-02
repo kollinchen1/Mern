@@ -24,7 +24,7 @@ const CreateBox = (props) => {
         inputs.height = inputs.height + "px";
         props.onNewBox( inputs);
         setInputs({
-            ...inputs,
+            color:"",
             width:"",
             height:""
             }
