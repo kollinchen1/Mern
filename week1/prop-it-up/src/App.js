@@ -14,6 +14,7 @@ function App() {
   return (
     <div className="App">
         <h1 style={{textDecoration: "underline"}}>Prop it Up</h1>
+        <PersonCard firstName="Jane" lastName=" asdas" age={31} hairColor="red"/>
         {peopleArr.map(person => {
           return <PersonCard header={person.lastName +", " + person.firstName} firstName={person.firstName} lastName={person.lastName} age={person.age} hairColor={person.hairColor} />
         })

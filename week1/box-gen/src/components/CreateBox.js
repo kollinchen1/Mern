@@ -23,6 +23,7 @@ const CreateBox = (props) => {
         inputs.width = inputs.width + "px";
         inputs.height = inputs.height + "px";
         props.onNewBox( inputs);
+        
         setInputs({
             color:"",
             width:"",
@@ -43,7 +44,7 @@ const CreateBox = (props) => {
             <label htmlFor="color">Color: </label> 
             <input 
                 name = "color"
-                type = "text"
+                type = "color"
                 onChange={onChange}
                 value = {inputs.color}
             />

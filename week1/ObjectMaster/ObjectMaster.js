@@ -27,7 +27,7 @@ const pokémon = Object.freeze([
 
 const bListPkmn = pokémon.filter( p => p.name[0] === "B" );
 const pkmnIds = pokémon.map( p => p.id )
-
+const pkmnIdTry = pokémon.filter((i,index)=>index!=2 )
 //an array of pokémon objects where the id is evenly divisible by 3
 const pkmnIds3 = pokémon.filter( p => p.id%3===0 )
 //an array of pokémon objects that are "fire" type
@@ -44,6 +44,7 @@ const pkmnNamesPoison = pokémon.filter( p => p.types.length ==1 && p.types[0]==
 const pkmnFlying = pokémon.filter(p => p.types.length > 1 && p.types[1]==="flying").map(p => p.types[0])
 // a count of the number of pokémon that are "normal" type
 const normalCount =  pokémon.filter(p => p.types.includes("normal")).length
+console.table(pkmnIdTry)
 console.table(pkmnIds3)
 console.table(pkmnFire)
 console.table(pkmnMore1)

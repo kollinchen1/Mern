@@ -109,35 +109,42 @@ const Form = (props) => {
                 break;
             case "password":
                 if(e.target.value.length<8 && e.target.value.length!==0){
+                    
                     setErrorObj({
                         ...errorObj,
                         password:"must be at least 8 characters."
                         }
                     )
-                    console.log(errorObj.password)
+                    
                 }
                     
                 else{
-                    console.log("Nope 121")
+                    // console.log("Nope 121")
                     setErrorObj({
                         ...errorObj,
                         password:""
                         }
                     )
+                    // console.log(errorObj.password)
                 }
-                // if(e.target.value !== inputs['confirmPassword'])
+                // if(e.target.value !== inputs['confirmPassword']){
+                //     console.log(inputs['confirmPassword'])
                 //     setErrorObj({
                 //         ...errorObj,
                 //         confirmPassword:"Not Match"
                 //         }
                 //     )
-                // else
+                // }
+                    
+                // else{
                 //     setErrorObj({
                 //         ...errorObj,
                 //         confirmPassword:""
                 //         }
                 //     )
-                // console.log(errorObj.password)
+                // }
+                    
+                console.log(errorObj.password)
                 // console.log(errorObj.confirmPassword)
                 break;
             case "confirmPassword":
@@ -186,7 +193,7 @@ const Form = (props) => {
                 </div>
                 <div>
                     <label htmlFor="email">Email: </label> 
-                    <input type="email" name = "email" onChange={onChange} />
+                    <input type="email" name = "email" autoComplete="username" onChange={onChange} />
                     {
                         errorObj.email?
                         <p style={{color:'red'}}>{ errorObj.email }</p> 
@@ -196,7 +203,7 @@ const Form = (props) => {
                 </div>
                 <div>
                     <label htmlFor="password">Password: </label>
-                    <input type="password"name = "password" onChange={onChange} />
+                    <input type="password" name = "password" autoComplete="new-password" onChange={onChange} />
                     {
                         errorObj.password?
                         <p style={{color:'red'}}>{ errorObj.password }</p> 
@@ -206,7 +213,7 @@ const Form = (props) => {
                 </div>
                 <div>
                     <label htmlFor="confirmPassword">Confirm Password: </label> 
-                    <input type="password" name = "confirmPassword" onChange={onChange} />
+                    <input type="password" autoComplete="new-password" name = "confirmPassword" onChange={onChange} />
                     {
                         errorObj.confirmPassword?
                         <p style={{color:'red'}}>{ errorObj.confirmPassword }</p> 
