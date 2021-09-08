@@ -6,12 +6,12 @@ import Input from "./Components/Input"
 function App() {
   return (
     <div className="App">
-      
+        <Input/>
         <Switch>
-        <Route exact path="/" render={()=>(<Input/>)}/>
+        {/* <Route exact path="/" render={()=>(<Input/>)}/> */}
         <Route exact path="/:category/:id" render={()=>(
           <div>
-            <Input/>
+            {/* <Input/> */}
             <Fetch/>
           </div>
         )}/>

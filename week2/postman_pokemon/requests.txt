@@ -1,0 +1,49 @@
+https://pokeapi.co/api/v2/pokemon/bulbasaur
+"base_experience": 64,
+    "forms": [
+        {
+            "name": "bulbasaur",
+            "url": "https://pokeapi.co/api/v2/pokemon-form/1/"
+        }
+    ],
+
+https://pokeapi.co/api/v2/pokemon/109
+"base_experience": 68,
+    "forms": [
+        {
+            "name": "koffing",
+            "url": "https://pokeapi.co/api/v2/pokemon-form/109/"
+        }
+    ],
+
+https://pokeapi.co/api/v2/pokemon/7/
+"base_experience": 63,
+    "forms": [
+        {
+            "name": "squirtle",
+            "url": "https://pokeapi.co/api/v2/pokemon-form/7/"
+        }
+    ],
+
+https://pokeapi.co/api/v2/pokemon?limit=30  
+returns 30 pokemons
+
+
+https://pokeapi.co/api/v2/pokemon/4/
+"base_experience": 62,
+    "forms": [
+        {
+            "name": "charmander",
+            "url": "https://pokeapi.co/api/v2/pokemon-form/4/"
+        }
+    ],
+
+https://pokeapi.co/api/v2/pokemon/25/
+https://pokeapi.co/api/v2/pokemon/pikachu/
+"base_experience": 112,
+    "forms": [
+        {
+            "name": "pikachu",
+            "url": "https://pokeapi.co/api/v2/pokemon-form/25/"
+        }
+    ],
