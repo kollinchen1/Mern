@@ -12,11 +12,11 @@ const Input = (props) => {
         e.preventDefault();
         if(NewObj.category && NewObj.id){
             history.push(`/${NewObj.category}/${NewObj.id}`)
-            setNewObj({
-                category:"",
-                id:""
-                }
-            )
+            // setNewObj({
+            //     category:"",
+            //     id:""
+            //     }
+            // )
         }
         else{
             alert("please fill out the form")
@@ -31,7 +31,7 @@ const Input = (props) => {
     return(
         <>
         
-        {JSON.stringify(NewObj)}   
+        {/* {JSON.stringify(NewObj)}    */}
         <div style={{marginTop:"50px"}}>
         <form onSubmit={handleEnter}>    
             <label htmlFor="category">Search for: </label> 

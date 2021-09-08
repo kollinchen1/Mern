@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {useParams} from "react-router-dom";
+import {useParams,Link} from "react-router-dom";
 import axios from 'axios';
 import Obi from '../Assets/ObiWan.jpeg'
 
 const Fetch = (props) => {
     const { category,id } = useParams();
     const [Obj, setObj] = useState({});
+    const [homeworld,setHomeworld] = useState({})
     // const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
@@ -26,6 +27,7 @@ const Fetch = (props) => {
             if(category === "people"){
                 let homeId = response.data['homeworld'].match(/(\d+)/)[1]; 
                 console.log(homeId);
+                fetchHomeworld(homeId)
                 first5['homeworld'] = `planet ${homeId}`;
             }
             setObj(first5)
@@ -33,6 +35,20 @@ const Fetch = (props) => {
         .catch(error =>{
             console.log(error);
             setObj("These aren't the droids you're looking for")
+        });
+    }
+
+    const fetchHomeworld = (id) =>{
+        axios.get('https://swapi.dev/api/planets/'+id)
+        .then(response=>{
+            console.log(response.data)
+            setHomeworld({
+                id:id,
+                name:response.data['name']
+            })
+        })
+        .catch(error =>{
+            console.log(error);
         });
     }
     return(
@@ -44,7 +60,12 @@ const Fetch = (props) => {
                         key==="name"?
                         <h1 key={i}>{Obj[key]}</h1>
                         :
+                        key==="homeworld"?
+                        <p key={i} style={{fontSize:"18px"}} ><span style={{fontWeight:"bold"}}>{key[0].toUpperCase()+key.substring(1)}:</span> <Link to={"/planets/"+homeworld.id}>{homeworld.name}</Link></p>
+                        :
                         <p key={i} style={{fontSize:"18px"}} ><span style={{fontWeight:"bold"}}>{key[0].toUpperCase()+key.substring(1)}:</span> {Obj[key]}</p>
+
+                        
                     )}
                     </div>
                     :
