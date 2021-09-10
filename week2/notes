@@ -2,3 +2,39 @@
     <input type="hidden" name="_method" value="PUT" />
     <!-- ... -->
 </form><br>
+
+
+server - will hold all server related files
+controllers - will hold all logic for each model (i.e creating, updating, etc...)
+models - will hold all the schemas
+routes - will handle all of our routes for each model
+server.js - will handle all the server logic with express
+
+
+Running the MongoDB server:
+brew services start mongodb-communitycopy
+That's it. If that was successful, the terminal should fill with a bunch of information and you should not be able to see your normal terminal prompt line, only a beeping underscore. This means your server is up and running.  What we have done is to run our database server and thereby open our MongoDB databases up for connections so we can query the DB and do CRUD operations.
+
+Connect to your database:
+To connect to your MongoDB databases, in your terminal, type...
+mongo
+Now you should see the terminal cursor become a single arrow and beeping underscore. We're in!
+
+Shutting down if your mongod window got closed:
+This is harder.  Open a terminal window and type:
+
+ps -ax | grep mongo
+then copy the number on the left of the row that shows 'sudo mongo' (or if that's not there, just 'mongo')  This is the process ID of the mongod command you ran.  Take that number and type
+
+sudo kill *that_number*
+
+And you'll be good.  The kill command tells a process ID to terminate.  Intense terminal stuff, huh?
+
+
+
+Each document you insert into this collection should have the following format: 
+({name: "Alex", home_state: "AZ", lucky_number: 18, birthday: {month: 12, day: 2, year: 2000}})
+({name: "Allen", home_state: "TX", lucky_number: 98, birthday: {month: 1, day: 24, year: 1998}})
+({name: "Wasabi", home_state: "NY", lucky_number: 26, birthday: {month: 7, day: 24, year: 1998}})
+({name: "Kollin", home_state: "CA", lucky_number: 9, birthday: {month: 9, day: 26, year: 1995}})
+({name: "Cherie", home_state: "CA", lucky_number: 95, birthday: {month: 12, day: 9, year: 1995}})
