@@ -3,6 +3,7 @@ import {BrowserRouter,Switch,Route} from "react-router-dom";
 import { Redirect } from 'react-router'
 import Main from './views/Main';
 import Detail from './views/Detail';
+import Update from './views/Update';
 import './App.css';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/products/:id">
             <Detail />
+          </Route>
+          <Route exact path="/products/:id/edit">
+              <Update />
           </Route>
         </Switch>
         
