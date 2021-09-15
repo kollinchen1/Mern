@@ -20,18 +20,24 @@ const Main = (props) => {
             })
             .catch(err => console.error(err));
     }
-    const incrementSize = () =>{
+    const onCreateProduct = newObj =>{
         setSize(size=>size+1)
+        axios.post('http://localhost:8000/api/products', newObj)
+            .then(res=>{
+                setProducts([...products, res.data]);
+                console.log(res.data);
+            })
+            .catch(err=>console.log(err))
     }
     
     const removeFromDom = productId => {
-        setProducts(products.filter(product => product._id != productId));
+        setProducts(products.filter(product => product._id !== productId));
     }
 
     return (
         <div>
-            <ProductForm increment = {incrementSize}/>
-            <hr/>
+            <ProductForm submitProduct = {onCreateProduct} header="Product Manager" initialTitle="" initialDescription="" initialPrice=""/>
+            
             {loaded && <ProductList products={products} removeFromDom={removeFromDom} />}
         </div>
     )
