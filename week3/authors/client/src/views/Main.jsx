@@ -22,15 +22,7 @@ const Main = (props) => {
             })
             .catch(err => console.error(err));
     }
-    // const onCreateProduct = newObj =>{
-    //     setSize(size=>size+1)
-    //     axios.post('http://localhost:8000/api/authors', newObj)
-    //         .then(res=>{
-    //             setAuthors([...authors, res.data]);
-    //             console.log(res.data);
-    //         })
-    //         .catch(err=>console.log(err))
-    // }
+
     const removeFromDom = authorId => {
         setAuthors(authors.filter(author => author._id !== authorId));
     }

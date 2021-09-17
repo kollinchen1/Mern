@@ -4,7 +4,7 @@ import DeleteButton from './DeleteButton';
 
 const AuthorList = (props) => {
     const { removeFromDom } = props;
-    
+
     return (
         <table style={{border:"1px solid",width:"100%"}}>
             <thead>
